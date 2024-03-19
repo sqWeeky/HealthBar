@@ -13,7 +13,6 @@ public class HealthChanger : MonoBehaviour
         if (_currentHealth <= 0)
         {
             _currentHealth = 0;
-            //Destroy(gameObject);
         }
     }
 
