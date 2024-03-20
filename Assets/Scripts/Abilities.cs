@@ -1,29 +1,24 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using static UnityEditor.Experimental.GraphView.GraphView;
 
-[RequireComponent(typeof(HealthChanger))]
+[RequireComponent(typeof(Health))]
 public class Abilities : MonoBehaviour
 {
     [SerializeField] private int _damage;
     [SerializeField] private int _extraHealth;
-    [SerializeField] private Transform _player;
+    [SerializeField] private Health _healthPlayer;
 
-    private HealthChanger _healthChanger;
+    private Health _health;
 
     private void Start()
     {
-        if (_player.TryGetComponent(out HealthChanger healthChanger))
-            _healthChanger = healthChanger;
+        if (_healthPlayer.TryGetComponent(out Health health))
+            _health = health;
     }
 
-    public void StartAction()
-    {
-        _healthChanger.TakeDamage(_damage);
-    }
+    public void Attack()
+        => _health.TakeDamage(_damage);
 
     public void Heal()
-    {
-        _healthChanger.Heal(_extraHealth);
-    }
+        => _health.Heal(_extraHealth);
 }
