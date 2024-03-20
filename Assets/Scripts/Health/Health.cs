@@ -1,6 +1,5 @@
 using UnityEngine;
 using System;
-using System.Collections;
 
 public class Health : MonoBehaviour
 {
@@ -10,16 +9,15 @@ public class Health : MonoBehaviour
     private int _minHealth = 0;
     public event Action<float> HealthChanged;
 
+    public float MaxHealth => _maxHealth;
+
     public void TakeDamage(int damage)
     {
         if (damage > 0)
             _currentHealth -= damage;
 
-        _currentHealth = Mathf.Max(_minHealth, _currentHealth);
+        _currentHealth = DetermineValue(_currentHealth);
         HealthChanged?.Invoke(_currentHealth);
-
-        if (_currentHealth == 0)
-            Destroy(gameObject);
     }
 
     public void Heal(int extraHealth)
@@ -27,13 +25,10 @@ public class Health : MonoBehaviour
         if (extraHealth > 0)
             _currentHealth += extraHealth;
 
-        _currentHealth = Mathf.Min(_currentHealth, _maxHealth);
+        _currentHealth = DetermineValue(_currentHealth);
         HealthChanged?.Invoke(_currentHealth);
     }
 
-    public float GetCurrentHealth()
-        => _currentHealth;
-
-    public float GetMaxHealth()
-        => _maxHealth;
+    private float DetermineValue(float currentValue)
+        => Mathf.Clamp(currentValue, _minHealth, _maxHealth);
 }

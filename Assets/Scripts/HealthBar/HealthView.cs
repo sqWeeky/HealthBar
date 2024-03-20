@@ -1,18 +1,19 @@
 using UnityEngine;
 
-[RequireComponent(typeof(Health))]
 public class HealthView : MonoBehaviour
 {
-    protected Health _health;
+    protected Health Health;
 
     private void Awake()
-        => _health = GetComponent<Health>();
+    {
+        Health = FindObjectOfType<Health>();
+    }
 
     private void OnEnable()
-        => _health.HealthChanged += DisplayAmount;
+        => Health.HealthChanged += DisplayAmount;
 
     private void OnDisable()
-        => _health.HealthChanged -= DisplayAmount;
+        => Health.HealthChanged -= DisplayAmount;
 
     public virtual void DisplayAmount(float value) { }
 }

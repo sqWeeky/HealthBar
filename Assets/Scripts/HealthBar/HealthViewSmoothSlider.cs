@@ -5,24 +5,25 @@ using UnityEngine.UI;
 public class HealthViewSmoothSlider : HealthView
 {
     [SerializeField] private Slider _slider;
-    [SerializeField] private float _step = 10f;
+    [SerializeField] private float _time = 10f;
 
-    private void Start()
-    {
-        _slider.maxValue = _health.GetMaxHealth();
-        _slider.value = _health.GetCurrentHealth();
-    }
+    private Coroutine _coroutine;
 
     public override void DisplayAmount(float value)
     {
-        StartCoroutine(SlowlyChangeValue(value));
+        if (_coroutine != null)
+            StopCoroutine(_coroutine);
+
+        _coroutine = StartCoroutine(SlowlyChangeValue(value));
     }
 
     private IEnumerator SlowlyChangeValue(float targetValue)
     {
+        targetValue /= Health.MaxHealth;
+
         while (_slider.value != targetValue)
         {
-            _slider.value = Mathf.MoveTowards(_slider.value, targetValue, _step * Time.deltaTime);
+            _slider.value = Mathf.Lerp(_slider.value, targetValue, _time * Time.deltaTime);
             yield return null;
         }
     }
