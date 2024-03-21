@@ -290,6 +290,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e622de80974a2a40887de79533640c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Health: {fileID: 1574003909}
   _textBar: {fileID: 145588277}
 --- !u!1 &148706306
 GameObject:
@@ -394,6 +395,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b0014bd618a19f43814152cb2e6f1f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Health: {fileID: 1574003909}
   _slider: {fileID: 148706308}
   _time: 2.5
 --- !u!1 &307544194
@@ -1101,7 +1103,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _damage: 17
   _extraHealth: 15
-  _health: {fileID: 0}
+  _health: {fileID: 1574003909}
 --- !u!4 &873274912
 Transform:
   m_ObjectHideFlags: 0
@@ -1336,7 +1338,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1574003911}
   - component: {fileID: 1574003909}
-  - component: {fileID: 1574003912}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -1373,18 +1374,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1574003912
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1574003908}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 816d9e2823d3e1f489c0bf09e79bea0e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1682941905
 GameObject:
   m_ObjectHideFlags: 0
@@ -1488,6 +1477,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d99ec3a199a366e4a99fafdb85deaee6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Health: {fileID: 1574003909}
   _slider: {fileID: 1682941907}
 --- !u!1 &1743481896
 GameObject:
